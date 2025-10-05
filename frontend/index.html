@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/auth.css">
+    <link rel="stylesheet" href="css/todo.css">
+    <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="spinner"></div>
+        <p>Loading...</p>
+    </div>
+
+    <!-- Error Container -->
+    <div id="error-container" class="error-container hidden">
+        <div class="error-message">
+            <span id="error-text"></span>
+            <button id="error-close" class="error-close">&times;</button>
+        </div>
+    </div>
+
+    <!-- Success Container -->
+    <div id="success-container" class="success-container hidden">
+        <div class="success-message">
+            <span id="success-text"></span>
+            <button id="success-close" class="success-close">&times;</button>
+        </div>
+    </div>
+
+    <!-- Main App Container -->
+    <div id="app" class="app-container">
+        <!-- Login Page -->
+        <div id="login-page" class="page hidden">
+            <div class="auth-container">
+                <div class="auth-card">
+                    <h1 class="auth-title">Welcome Back</h1>
+                    <p class="auth-subtitle">Sign in to your account</p>
+                    
+                    <form id="login-form" class="auth-form">
+                        <div class="form-group">
+                            <label for="login-email">Email</label>
+                            <input type="email" id="login-email" name="email" required>
+                            <div class="field-error" id="login-email-error"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="login-password">Password</label>
+                            <input type="password" id="login-password" name="password" required>
+                            <div class="field-error" id="login-password-error"></div>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-full" id="login-btn">
+                            <span class="btn-text">Sign In</span>
+                            <span class="btn-spinner hidden"></span>
+                        </button>
+                    </form>
+                    
+                    <div class="auth-footer">
+                        <p>Don't have an account? <a href="#register" class="auth-link">Sign up</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Registration Page -->
+        <div id="register-page" class="page hidden">
+            <div class="auth-container">
+                <div class="auth-card">
+                    <h1 class="auth-title">Create Account</h1>
+                    <p class="auth-subtitle">Join us today</p>
+                    
+                    <form id="register-form" class="auth-form">
+                        <div class="form-group">
+                            <label for="register-username">Username</label>
+                            <input type="text" id="register-username" name="username" required minlength="3" maxlength="20">
+                            <div class="field-error" id="register-username-error"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="register-email">Email</label>
+                            <input type="email" id="register-email" name="email" required>
+                            <div class="field-error" id="register-email-error"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="register-password">Password</label>
+                            <input type="password" id="register-password" name="password" required minlength="6">
+                            <div class="field-error" id="register-password-error"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="register-confirm-password">Confirm Password</label>
+                            <input type="password" id="register-confirm-password" name="confirmPassword" required>
+                            <div class="field-error" id="register-confirm-password-error"></div>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-full" id="register-btn">
+                            <span class="btn-text">Create Account</span>
+                            <span class="btn-spinner hidden"></span>
+                        </button>
+                    </form>
+                    
+                    <div class="auth-footer">
+                        <p>Already have an account? <a href="#login" class="auth-link">Sign in</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Todo Dashboard Page -->
+        <div id="todos-page" class="page hidden">
+            <div class="todo-container">
+                <!-- Header -->
+                <header class="todo-header">
+                    <div class="header-content">
+                        <h1 class="todo-title">My Todos</h1>
+                        <div class="user-info">
+                            <span class="user-name" id="user-name">User</span>
+                            <button id="logout-btn" class="btn btn-outline">Logout</button>
+                        </div>
+                    </div>
+                </header>
+
+                <!-- Todo Creation Form -->
+                <div class="todo-form-container">
+                    <form id="todo-form" class="todo-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="todo-title">Title</label>
+                                <input type="text" id="todo-title" name="title" placeholder="What needs to be done?" required maxlength="100">
+                                <div class="field-error" id="todo-title-error"></div>
+                            </div>
+                            <button type="submit" class="btn btn-primary" id="add-todo-btn">
+                                <span class="btn-text">Add Todo</span>
+                                <span class="btn-spinner hidden"></span>
+                            </button>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="todo-description">Description (Optional)</label>
+                            <textarea id="todo-description" name="description" placeholder="Add more details..." maxlength="500"></textarea>
+                            <div class="field-error" id="todo-description-error"></div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Filter Controls -->
+                <div class="filter-controls">
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="pending">Pending</button>
+                        <button class="filter-btn" data-filter="completed">Completed</button>
+                    </div>
+                    <div class="todo-stats">
+                        <span id="todo-count">0 todos</span>
+                    </div>
+                </div>
+
+                <!-- Todo List -->
+                <div class="todo-list-container">
+                    <div id="todo-list" class="todo-list">
+                        <!-- Todos will be dynamically inserted here -->
+                    </div>
+                    
+                    <!-- Empty State -->
+                    <div id="empty-state" class="empty-state hidden">
+                        <div class="empty-icon">📝</div>
+                        <h3>No todos yet</h3>
+                        <p>Create your first todo to get started!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/utils.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/router.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/todo.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
