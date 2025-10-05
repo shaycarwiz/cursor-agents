@@ -5,12 +5,14 @@ A modern, responsive frontend application for the Todo system built with vanilla
 ## Features
 
 - **Authentication System**
+
   - User login and registration
   - JWT token-based authentication
   - Protected routes
   - Auto-redirect based on auth status
 
 - **Todo Management**
+
   - Create, read, update, and delete todos
   - Mark todos as complete/incomplete
   - Filter todos (all, pending, completed)
@@ -18,6 +20,7 @@ A modern, responsive frontend application for the Todo system built with vanilla
   - Inline editing
 
 - **User Experience**
+
   - Responsive design (mobile-first)
   - Loading states and error handling
   - Form validation
@@ -64,11 +67,13 @@ frontend/
 ### Installation
 
 1. Navigate to the frontend directory:
+
    ```bash
    cd frontend
    ```
 
 2. Start the development server:
+
    ```bash
    npm start
    # or
@@ -115,12 +120,14 @@ You can also serve the files using any static file server:
 The frontend communicates with the backend API at `http://localhost:3000/api`:
 
 ### Authentication Endpoints
+
 - `POST /auth/login` - User login
 - `POST /auth/register` - User registration
 - `GET /auth/verify` - Token verification
 - `POST /auth/logout` - User logout
 
 ### Todo Endpoints
+
 - `GET /todos` - Get user's todos
 - `POST /todos` - Create new todo
 - `PUT /todos/:id` - Update todo
