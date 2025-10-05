@@ -23,41 +23,57 @@ A complete backend API system for a Todo application with user authentication an
 ## Project Structure
 
 ```
-backend/
-├── config/
-│   └── database.js          # Database configuration and connection
-├── models/
-│   ├── User.js              # User model with authentication methods
-│   └── Todo.js              # Todo model with CRUD operations
-├── routes/
-│   ├── auth.js              # Authentication routes (register, login, verify)
-│   └── todos.js             # Todo CRUD routes
-├── middleware/
-│   ├── auth.js              # JWT authentication middleware
-│   └── validation.js        # Input validation and sanitization
-├── utils/
-│   └── helpers.js           # Utility functions
-└── database/
-    ├── init.sql             # Database schema (reference)
-    └── todo.db              # SQLite database file (created on first run)
+cursor-agents/
+├── backend/                 # Backend API server
+│   ├── package.json         # Backend dependencies
+│   ├── server.js            # Main server file
+│   ├── config/
+│   │   └── database.js      # Database configuration and connection
+│   ├── models/
+│   │   ├── User.js          # User model with authentication methods
+│   │   └── Todo.js          # Todo model with CRUD operations
+│   ├── routes/
+│   │   ├── auth.js          # Authentication routes (register, login, verify)
+│   │   └── todos.js         # Todo CRUD routes
+│   ├── middleware/
+│   │   ├── auth.js          # JWT authentication middleware
+│   │   └── validation.js    # Input validation and sanitization
+│   ├── utils/
+│   │   └── helpers.js       # Utility functions
+│   └── database/
+│       ├── init.sql         # Database schema (reference)
+│       └── todo.db          # SQLite database file (created on first run)
+├── frontend/                # Frontend application
+│   ├── package.json         # Frontend dependencies
+│   ├── index.html           # Main HTML file
+│   ├── css/                 # Stylesheets
+│   ├── js/                  # JavaScript modules
+│   └── assets/              # Static assets
+└── README.md                # Project documentation
 ```
 
 ## Installation
 
-1. **Install dependencies**:
+1. **Navigate to backend directory**:
+
+   ```bash
+   cd backend
+   ```
+
+2. **Install dependencies**:
 
    ```bash
    npm install
    ```
 
-2. **Set up environment variables**:
+3. **Set up environment variables**:
 
    ```bash
    cp .env.example .env
    # Edit .env with your configuration
    ```
 
-3. **Start the server**:
+4. **Start the server**:
 
    ```bash
    # Development mode with auto-restart
@@ -65,6 +81,9 @@ backend/
 
    # Production mode
    npm start
+
+   # Or run directly
+   node server.js
    ```
 
 ## API Endpoints
