@@ -1,0 +1,30 @@
+{
+  "name": "todo-frontend",
+  "version": "1.0.0",
+  "description": "Frontend application for Todo system with authentication and todo management",
+  "main": "index.html",
+  "scripts": {
+    "start": "python3 -m http.server 8080",
+    "serve": "python3 -m http.server 8080",
+    "dev": "python3 -m http.server 8080"
+  },
+  "keywords": [
+    "todo",
+    "frontend",
+    "javascript",
+    "vanilla-js",
+    "authentication"
+  ],
+  "author": "Dev Worker 2",
+  "license": "MIT",
+  "devDependencies": {},
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/your-org/todo-app.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-org/todo-app/issues"
+  },
+  "homepage": "https://github.com/your-org/todo-app#readme"
+}
